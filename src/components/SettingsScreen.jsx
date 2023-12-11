@@ -5,8 +5,11 @@ import { useState } from 'react'
 
 const SettingsScreen = () => {
   const [city, setCity] = useState(
-    localStorage.getItem('city') ? localStorage.getItem('city') : 'Madrid'
-  )
+    typeof window !== 'undefined' && localStorage.getItem('city')
+      ? localStorage.getItem('city')
+      : 'Madrid'
+  );
+  
 
   const handleCityChange = (event) => {
     setCity(event.target.value)

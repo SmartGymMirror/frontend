@@ -5,8 +5,11 @@ import { useEffect, useState } from "react"
 
 const WeatherScreen = () => {
   const [city, setCity] = useState(
-    localStorage.getItem('city') ? localStorage.getItem('city') : 'Madrid'
-  )
+    typeof window !== 'undefined' && localStorage.getItem('city')
+      ? localStorage.getItem('city')
+      : 'Madrid'
+  );
+  
   const [weatherInfo, setWeatherInfo] = useState('')
 
   useEffect(() => {
