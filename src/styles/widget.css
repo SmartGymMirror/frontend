@@ -1,0 +1,14 @@
+.widget-container{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widget-container img{
+  width: 80%;
+  height: 80%;
+}

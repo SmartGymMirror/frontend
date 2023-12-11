@@ -1,0 +1,31 @@
+.settings-screen-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 4rem;
+}
+
+.settings-screen-container h1{
+  font-size: 3rem;
+}
+
+.settings-screen-container label{
+  font-size: 3rem;
+}
+
+.settings-screen-container input{
+  font-size: 2.5rem;
+  border-radius: 1rem;
+  margin-left: 2rem;
+  padding: .3rem;
+  padding-left: .5rem;
+}
+
+#submit-location-button{
+  font-size: 2rem;
+  padding: .5rem;
+  border-radius: 1rem;
+}

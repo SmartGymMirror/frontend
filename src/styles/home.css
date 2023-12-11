@@ -1,0 +1,34 @@
+.home-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 0;
+  align-items: center;
+}
+
+#logo-container{
+  height: 70%;
+}
+
+#logo-container:hover{
+  cursor: pointer;
+}
+
+
+#fecha {
+  font-size: 3rem;
+  height: 25%;
+}
+
+#reloj-digital {
+  height: 15%;
+  border-radius: 1rem;
+  padding: .6rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+}
