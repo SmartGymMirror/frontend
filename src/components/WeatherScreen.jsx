@@ -15,7 +15,7 @@ const WeatherScreen = () => {
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        const res = await fetch(`https://vercel.com/smart-gym-mirror/django-weather-api/7g5qmfdxLxePXhPzXDbHq1A28UZ4/api/weather/?localizacion=${city}`)
+        const res = await fetch(`https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`)
         if (res.ok) {
           const data = await res.json()
           setWeatherInfo(JSON.stringify(data))
