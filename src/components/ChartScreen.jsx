@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Chart } from './Chart'
 import { filterData, processData } from '@/utils/progressData'
 
-const ChartScreen = () => {
+const ChartScreen = ({city, setCity}) => {
   const series = ['weight', 'muscular_mass', 'body_fat']
 
   const [currentSerie, setCurrentSerie] = useState(series[0])

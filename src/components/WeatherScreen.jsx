@@ -3,9 +3,7 @@
 import '@/styles/weather-screen.css'
 import { useEffect, useState } from 'react'
 
-const WeatherScreen = () => {
-  const [city, setCity] = useState('')
-
+const WeatherScreen = ({city, setCity}) => {
   useEffect(() => {
     setCity(localStorage.getItem('city') ? localStorage.getItem('city') : 'Madrid')
   }, [])

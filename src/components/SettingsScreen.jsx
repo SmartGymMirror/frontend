@@ -3,13 +3,7 @@
 import '@/styles/settings-screen.css'
 import { useState, useEffect } from 'react'
 
-const SettingsScreen = () => {
-  const [city, setCity] = useState(
-    typeof window !== 'undefined' && localStorage.getItem('city')
-      ? localStorage.getItem('city')
-      : 'Madrid'
-  );
-
+const SettingsScreen = ({city, setCity}) => {
   const searchingStates = {
     buscar: 'buscar',
     buscando: 'buscando',

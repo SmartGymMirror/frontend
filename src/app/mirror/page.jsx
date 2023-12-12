@@ -14,11 +14,17 @@ const Mirror = () => {
     settings: { src: '/icons/settings.svg', component: SettingsScreen},
   }
 
+  const [city, setCity] = useState(
+    typeof window !== 'undefined' && localStorage.getItem('city')
+      ? localStorage.getItem('city')
+      : 'Madrid'
+  );
+
   const [activeWidget, setActiveWidget] = useState(widgets.weather)
 
   const renderActiveScreen = () => {
     const ScreenComponent = activeWidget.component
-    return <ScreenComponent />
+    return <ScreenComponent city={city} setCity={setCity}/>
   }
 
   return (
