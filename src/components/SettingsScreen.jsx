@@ -33,18 +33,15 @@ const SettingsScreen = () => {
       const json = await res.json()
       if (json['message'] === 'city not found'){
         setSearchState(searchingStates.error)
-        setValidCity(false)
         return false
       }
       else{
         setSearchState(searchingStates.encontrado)
-        setValidCity(true)
         return true
       }
     }catch (error){
       console.error(error)
       setSearchState(searchingStates.error)
-      setValidCity(false)
       return false
     }
 
