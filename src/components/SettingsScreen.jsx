@@ -37,7 +37,8 @@ const SettingsScreen = () => {
     try{
 
       const res = await fetch(`https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`)
-      console.log(res)
+      console.log(res?.data)
+      console.log(res?.body)
       if (res.ok)
         setSearchState(searchingStates.encontrado)
     }catch (error){
