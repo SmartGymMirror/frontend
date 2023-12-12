@@ -5,6 +5,15 @@ import { useEffect, useState } from 'react'
 
 const WeatherScreen = () => {
 
+  const [city, setCity] = useState('Madrid')
+
+  useEffect(() => {
+    const storedCity = localStorage.getItem('city');
+    if (typeof window !== 'undefined' && storedCity) {
+      setCity(storedCity);
+    }
+  }, []);
+
   const [loadingWeatherInfo, setLoadingWeatherInfo] = useState(true)
 
   const [weatherInfo, setWeatherInfo] = useState('')
@@ -14,7 +23,7 @@ const WeatherScreen = () => {
       setLoadingWeatherInfo(true)
       try {
         const res = await fetch(
-          `https://django-weather-api.vercel.app/api/weather/?localizacion=${localStorage.getItem('city')}`
+          `https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`
         )
         if (res.ok) {
           const data = await res.json()
@@ -34,7 +43,7 @@ const WeatherScreen = () => {
   return (
     <div className="weather-screen-container">
       <h1>Pronóstico meteorológico</h1>
-      <h2>Ciudad actual: {localStorage.getItem('city')}</h2>
+      <h2>Ciudad actual: {city}</h2>
       <div className="pronostico-meteorologico">
         {loadingWeatherInfo ? (
           'Cargando...'
