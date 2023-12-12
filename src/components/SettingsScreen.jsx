@@ -3,7 +3,7 @@
 import '@/styles/settings-screen.css'
 import { useState, useEffect } from 'react'
 
-const SettingsScreen = ({city, setCity}) => {
+const SettingsScreen = ({city, setCity, validCity, setValidCity}) => {
   const searchingStates = {
     buscar: 'buscar',
     buscando: 'buscando',
@@ -23,8 +23,7 @@ const SettingsScreen = ({city, setCity}) => {
   }
 
   const submitLocation = () => {
-    if(checkLocation(city))
-      localStorage.setItem('city', city)
+    checkLocation(city)
   }
 
   const checkLocation = async () => {
@@ -33,13 +32,18 @@ const SettingsScreen = ({city, setCity}) => {
 
       const res = await fetch(`https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`)
       const json = await res.json()
-      if (json['message'] === 'city not found')
+      if (json['message'] === 'city not found'){
         setSearchState(searchingStates.error)
-      else
+        setValidCity(false)
+      }
+      else{
         setSearchState(searchingStates.encontrado)
+        setValidCity(true)
+      }
     }catch (error){
       console.error(error)
       setSearchState(searchingStates.error)
+      setValidCity(false)
     }
 
   }

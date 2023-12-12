@@ -5,7 +5,7 @@ import SettingsScreen from '@/components/SettingsScreen'
 import WeatherScreen from '@/components/WeatherScreen'
 import Widget from '@/components/Widget'
 import '@/styles/mirror.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Mirror = () => {
   const widgets = {
@@ -20,11 +20,17 @@ const Mirror = () => {
       : 'Madrid'
   );
 
+  useEffect(() => {
+    setCity((localStorage.getItem('city') && isValidCity) ? localStorage.getItem('city') : 'Madrid')
+  }, [city])
+
+  const [isValidCity, setIsValidCity] = useState(false)
+
   const [activeWidget, setActiveWidget] = useState(widgets.weather)
 
   const renderActiveScreen = () => {
     const ScreenComponent = activeWidget.component
-    return <ScreenComponent city={city} setCity={setCity}/>
+    return <ScreenComponent city={city} setCity={setCity} validCity={isValidCity} setValidCity={setIsValidCity}/>
   }
 
   return (
