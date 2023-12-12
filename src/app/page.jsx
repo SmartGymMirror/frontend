@@ -44,8 +44,8 @@ const Home = () => {
         <Logo />
       </div>
       <div id="reloj-digital">
-        <span id="hora">{hora}</span>:<span id="minuto">{minuto}</span>:
-        <span id="segundo">{segundo}</span>
+        <span id="hora">{hora !== '' ? hora : '00'}</span>:<span id="minuto">{minuto !== '' ? minuto : '00'}</span>:
+        <span id="segundo">{segundo !== '' ? segundo : '00'}</span>
       </div>
     </div>
   )
