@@ -14,10 +14,6 @@ const SettingsScreen = () => {
   const [currentCity, setCurrentCity] = useState('')
 
   const [searchState, setSearchState] = useState(searchingStates.buscar)
-
-  useEffect(() => {
-    setSearchState(searchingStates.buscar)
-  }, [])
   
   const handleCityChange = (event) => {
     setCurrentCity(event.target.value)

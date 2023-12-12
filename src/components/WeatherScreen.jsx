@@ -29,7 +29,7 @@ const WeatherScreen = () => {
     }
 
     fetchWeather()
-  }, [city])
+  }, [])
 
   return (
     <div className="weather-screen-container">
