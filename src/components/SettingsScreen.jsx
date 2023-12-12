@@ -44,8 +44,9 @@ const SettingsScreen = () => {
 
   }
 
-  const submitLocation = () => {
-    if(checkLocation(currentCity) === true){
+  const submitLocation = async () => {
+    const resultado = await checkLocation(currentCity)
+    if(resultado === true){
       localStorage.setItem('city', currentCity)
     }
   }
