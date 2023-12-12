@@ -34,7 +34,7 @@ const WeatherScreen = () => {
   return (
     <div className="weather-screen-container">
       <h1>Pronóstico meteorológico</h1>
-      <h2>Ciudad actual: {city}</h2>
+      <h2>Ciudad actual: {localStorage.getItem('city')}</h2>
       <div className="pronostico-meteorologico">
         {loadingWeatherInfo ? (
           'Cargando...'
