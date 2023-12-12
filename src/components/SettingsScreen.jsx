@@ -10,11 +10,17 @@ const SettingsScreen = () => {
       : 'Madrid'
   );
 
-  const [searchingCity, setSearchingCity] = useState(false)
-  const [isCorrectLocation, setIsCorrectLocation] = useState(null)
+  const searchingStates = {
+    buscar: 'buscar',
+    buscando: 'buscando',
+    encontrado: 'encontrado',
+    error: 'error',
+  }
+
+  const [searchState, setSearchState] = useState(searchingStates.buscar)
 
   useEffect(() => {
-    setIsCorrectLocation(null)
+    setSearchState(searchingStates.buscar)
   }, [])
   
   const handleCityChange = (event) => {
@@ -27,18 +33,17 @@ const SettingsScreen = () => {
   }
 
   const checkLocation = async () => {
-    setSearchingCity(true)
-    const res = await fetch(
-      `https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`
-    )
-    setSearchingCity(false)
-    if (res.ok) {
-      setIsCorrectLocation(true)
-      return true
-    } else {
-      setIsCorrectLocation(false)
-      return false
+    setSearchState(searchingStates.buscando)
+    try{
+
+      const res = await fetch(`https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`)
+      if (res.ok)
+        setSearchState(searchingStates.encontrado)
+    }catch (error){
+      console.error(error)
+      setSearchState(searchingStates.error)
     }
+
   }
 
   return (
@@ -51,8 +56,8 @@ const SettingsScreen = () => {
         onChange={handleCityChange}
         placeholder="Ingrese la ciudad"
       />
-      <button onClick={submitLocation} type="submit" id='submit-location-button' className={isCorrectLocation == true ? 'correct' : (isCorrectLocation == false ? 'incorrect' : '')}>
-        {searchingCity ? 'Buscando...' : 'Buscar'}
+      <button onClick={submitLocation} type="submit" id='submit-location-button' className={searchState}>
+        {searchState}
       </button>
     </div>
   )

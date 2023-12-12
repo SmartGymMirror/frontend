@@ -36,12 +36,12 @@
   background-color: #ccc;
 }
 
-.settings-screen-container button.correct{
+.settings-screen-container button.encontrado{
   background-color: rgba(0, 255, 0, 0.358);
   border: .35rem solid green;
 }
 
-.settings-screen-container button.incorrect{
+.settings-screen-container button.error{
   background-color: rgba(255, 0, 0, 0.358);
   border: .35rem solid red;
 }
