@@ -1,3 +1,5 @@
+'use client'
+
 import '@/styles/chart-screen.css'
 import { useEffect, useState } from 'react'
 import { Chart } from './Chart'
@@ -13,8 +15,10 @@ const ChartScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       const chartData = await fetch('https://django-weather-api.vercel.app/api/datos-ficticios')
+      console.log(chartData)
       const arrangedData = await processData(chartData)
       setProcessedData(arrangedData)
+      console.log(arrangedData)
     }
     fetchData()
   }, [])

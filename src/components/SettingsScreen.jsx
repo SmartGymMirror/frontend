@@ -25,6 +25,7 @@ const SettingsScreen = () => {
   
   const handleCityChange = (event) => {
     setCity(event.target.value)
+    setSearchState(searchingStates.buscar)
   }
 
   const submitLocation = () => {
