@@ -21,15 +21,15 @@ const SettingsScreen = () => {
   }
 
   const submitLocation = () => {
-    if(checkLocation(city))
-      localStorage.setItem('city', city)
+    if(checkLocation(currentCity))
+      localStorage.setItem('city', currentCity)
   }
 
   const checkLocation = async () => {
     setSearchState(searchingStates.buscando)
     try{
 
-      const res = await fetch(`https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`)
+      const res = await fetch(`https://django-weather-api.vercel.app/api/weather/?localizacion=${currentCity}`)
       const json = await res.json()
       if (json['message'] === 'city not found'){
         setSearchState(searchingStates.error)
@@ -56,7 +56,7 @@ const SettingsScreen = () => {
       <label>Ciudad a consultar</label>
       <input
         type="text"
-        value={city}
+        value={currentCity}
         onChange={handleCityChange}
         placeholder="Ingrese la ciudad"
       />
