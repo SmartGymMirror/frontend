@@ -24,6 +24,7 @@ const SettingsScreen = ({city, setCity, validCity, setValidCity}) => {
 
   const submitLocation = () => {
     checkLocation(city)
+    localStorage.setItem('city', city)
   }
 
   const checkLocation = async () => {
