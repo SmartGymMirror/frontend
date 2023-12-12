@@ -2,8 +2,11 @@
 
 import '@/styles/weather-screen.css'
 import { useEffect, useState } from 'react'
+import {useCity} from '@/hooks/useCity.jsx'
 
-const WeatherScreen = ({city, setCity, validCity, setValidCity}) => {
+const WeatherScreen = () => {
+  const [city] = useCity()
+
   const [loadingWeatherInfo, setLoadingWeatherInfo] = useState(true)
 
   const [weatherInfo, setWeatherInfo] = useState('')

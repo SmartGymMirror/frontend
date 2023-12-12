@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Chart } from './Chart'
 import { filterData, processData } from '@/utils/progressData'
 
-const ChartScreen = ({city, setCity, validCity, setValidCity}) => {
+const ChartScreen = () => {
   const series = ['weight', 'muscular_mass', 'body_fat']
 
   const [currentSerie, setCurrentSerie] = useState(series[0])
@@ -18,7 +18,6 @@ const ChartScreen = ({city, setCity, validCity, setValidCity}) => {
       const chartDatajson = await chartData.json()
       const arrangedData = await processData(chartDatajson)
       setProcessedData(arrangedData)
-      console.log(arrangedData)
     }
     fetchData()
   }, [])

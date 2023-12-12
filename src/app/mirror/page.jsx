@@ -14,23 +14,13 @@ const Mirror = () => {
     settings: { src: '/icons/settings.svg', component: SettingsScreen},
   }
 
-  const [city, setCity] = useState(
-    typeof window !== 'undefined' && localStorage.getItem('city')
-      ? localStorage.getItem('city')
-      : 'Madrid'
-  );
-
-  useEffect(() => {
-    setCity((localStorage.getItem('city') && isValidCity) ? localStorage.getItem('city') : 'Madrid')
-  }, [city])
-
-  const [isValidCity, setIsValidCity] = useState(false)
-
   const [activeWidget, setActiveWidget] = useState(widgets.weather)
 
   const renderActiveScreen = () => {
     const ScreenComponent = activeWidget.component
-    return <ScreenComponent city={city} setCity={setCity} validCity={isValidCity} setValidCity={setIsValidCity}/>
+    return (
+      <ScreenComponent/>
+    )
   }
 
   return (

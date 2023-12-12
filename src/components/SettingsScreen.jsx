@@ -2,14 +2,19 @@
 
 import '@/styles/settings-screen.css'
 import { useState, useEffect } from 'react'
+import {useCity} from '@/hooks/useCity.jsx'
 
-const SettingsScreen = ({city, setCity, validCity, setValidCity}) => {
+const SettingsScreen = () => {
   const searchingStates = {
     buscar: 'buscar',
     buscando: 'buscando',
     encontrado: 'encontrado',
     error: 'error',
   }
+
+  const [setCity] = useCity()
+
+  const [currentCity, setCurrentCity] = useState('')
 
   const [searchState, setSearchState] = useState(searchingStates.buscar)
 
@@ -18,13 +23,13 @@ const SettingsScreen = ({city, setCity, validCity, setValidCity}) => {
   }, [])
   
   const handleCityChange = (event) => {
-    setCity(event.target.value)
+    setCurrentCity(event.target.value)
     setSearchState(searchingStates.buscar)
   }
 
   const submitLocation = () => {
-    checkLocation(city)
-    localStorage.setItem('city', city)
+    if(checkLocation(city))
+      setCity(currentCity)
   }
 
   const checkLocation = async () => {
@@ -36,15 +41,18 @@ const SettingsScreen = ({city, setCity, validCity, setValidCity}) => {
       if (json['message'] === 'city not found'){
         setSearchState(searchingStates.error)
         setValidCity(false)
+        return false
       }
       else{
         setSearchState(searchingStates.encontrado)
         setValidCity(true)
+        return true
       }
     }catch (error){
       console.error(error)
       setSearchState(searchingStates.error)
       setValidCity(false)
+      return false
     }
 
   }
