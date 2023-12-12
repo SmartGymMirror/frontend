@@ -14,7 +14,8 @@
 
 .grafico-progreso{
   position: relative;
-  width: 100%;
+  padding-right: 3rem;
+  width: 90%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -22,10 +23,17 @@
 }
 
 .chart-controls{
-  width: 100%;
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  width: 95%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   column-gap: 12rem;
+}
+
+.chart-controls button:hover{
+  cursor: pointer;
 }
 
 .chart-controls button {

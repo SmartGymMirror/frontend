@@ -1,7 +1,7 @@
 'use client'
 
 import '@/styles/settings-screen.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const SettingsScreen = () => {
   const [city, setCity] = useState(
@@ -9,15 +9,36 @@ const SettingsScreen = () => {
       ? localStorage.getItem('city')
       : 'Madrid'
   );
-  
 
+  const [searchingCity, setSearchingCity] = useState(false)
+  const [isCorrectLocation, setIsCorrectLocation] = useState(null)
+
+  useEffect(() => {
+    setIsCorrectLocation(null)
+  }, [])
+  
   const handleCityChange = (event) => {
     setCity(event.target.value)
   }
 
   const submitLocation = () => {
-    console.log(`ciudad a consultar: ${city}`)
-    localStorage.setItem('city', city)
+    if(checkLocation(city))
+      localStorage.setItem('city', city)
+  }
+
+  const checkLocation = async () => {
+    setSearchingCity(true)
+    const res = await fetch(
+      `https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`
+    )
+    setSearchingCity(false)
+    if (res.ok) {
+      setIsCorrectLocation(true)
+      return true
+    } else {
+      setIsCorrectLocation(false)
+      return false
+    }
   }
 
   return (
@@ -30,8 +51,8 @@ const SettingsScreen = () => {
         onChange={handleCityChange}
         placeholder="Ingrese la ciudad"
       />
-      <button onClick={submitLocation} type="submit" id='submit-location-button'>
-        Consultar
+      <button onClick={submitLocation} type="submit" id='submit-location-button' className={isCorrectLocation == true ? 'correct' : (isCorrectLocation == false ? 'incorrect' : '')}>
+        {searchingCity ? 'Buscando...' : 'Buscar'}
       </button>
     </div>
   )
