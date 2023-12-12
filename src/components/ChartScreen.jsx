@@ -15,7 +15,7 @@ const ChartScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       const chartData = await fetch('https://django-weather-api.vercel.app/api/datos-ficticios')
-      console.log(chartData)
+      chartData = await chartData.json()
       const arrangedData = await processData(chartData)
       setProcessedData(arrangedData)
       console.log(arrangedData)
