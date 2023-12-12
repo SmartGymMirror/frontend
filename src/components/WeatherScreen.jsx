@@ -2,10 +2,8 @@
 
 import '@/styles/weather-screen.css'
 import { useEffect, useState } from 'react'
-import {useCity} from '@/hooks/useCity.jsx'
 
 const WeatherScreen = () => {
-  const [city] = useCity()
 
   const [loadingWeatherInfo, setLoadingWeatherInfo] = useState(true)
 
@@ -16,7 +14,7 @@ const WeatherScreen = () => {
       setLoadingWeatherInfo(true)
       try {
         const res = await fetch(
-          `https://django-weather-api.vercel.app/api/weather/?localizacion=${city}`
+          `https://django-weather-api.vercel.app/api/weather/?localizacion=${localStorage.getItem('city')}`
         )
         if (res.ok) {
           const data = await res.json()

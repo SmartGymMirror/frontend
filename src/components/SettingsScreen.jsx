@@ -2,7 +2,6 @@
 
 import '@/styles/settings-screen.css'
 import { useState, useEffect } from 'react'
-import {useCity} from '@/hooks/useCity.jsx'
 
 const SettingsScreen = () => {
   const searchingStates = {
@@ -11,8 +10,6 @@ const SettingsScreen = () => {
     encontrado: 'encontrado',
     error: 'error',
   }
-
-  const [setCity] = useCity()
 
   const [currentCity, setCurrentCity] = useState('')
 
@@ -29,7 +26,7 @@ const SettingsScreen = () => {
 
   const submitLocation = () => {
     if(checkLocation(city))
-      setCity(currentCity)
+      localStorage.setItem('city', city)
   }
 
   const checkLocation = async () => {
