@@ -20,10 +20,7 @@ const SettingsScreen = () => {
     setSearchState(searchingStates.buscar)
   }
 
-  const submitLocation = () => {
-    if(checkLocation(currentCity))
-      localStorage.setItem('city', currentCity)
-  }
+
 
   const checkLocation = async () => {
     setSearchState(searchingStates.buscando)
@@ -45,6 +42,12 @@ const SettingsScreen = () => {
       return false
     }
 
+  }
+
+  const submitLocation = () => {
+    if(checkLocation(currentCity) === true){
+      localStorage.setItem('city', currentCity)
+    }
   }
 
   return (
