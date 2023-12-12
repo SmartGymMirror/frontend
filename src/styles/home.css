@@ -7,6 +7,7 @@
   justify-content: space-between;
   padding: 2rem 0;
   align-items: center;
+  color: white !important;
 }
 
 #logo-container{
