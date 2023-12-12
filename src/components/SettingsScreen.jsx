@@ -56,9 +56,9 @@ const SettingsScreen = () => {
         onChange={handleCityChange}
         placeholder="Ingrese la ciudad"
       />
-      {/* <button onClick={submitLocation} type="submit" id='submit-location-button' className={searchState}>
+      <button onClick={submitLocation} type="submit" id='submit-location-button' className={searchState}>
         {searchState}
-      </button> */}
+      </button>
     </div>
   )
 }

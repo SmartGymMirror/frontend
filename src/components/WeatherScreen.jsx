@@ -74,7 +74,7 @@ const WeatherScreen = () => {
             <div className="right-data">
 {/*               <p>
                 Descripción:{' '}
-                {weatherInfo?.weather[0]?.description
+                {weatherInfo?.weather
                   ? weatherInfo.weather[0].description
                   : 'Buscando...'}
               </p> */}
