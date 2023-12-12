@@ -20,3 +20,18 @@
   justify-content: center;
   align-items: center;
 }
+
+.chart-controls{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  column-gap: 12rem;
+}
+
+.chart-controls button {
+  background-color: rgb(222, 222, 222);
+  font-size: 3rem;
+  border: none;
+  border-radius: 1rem;
+  width: 3rem;
+}

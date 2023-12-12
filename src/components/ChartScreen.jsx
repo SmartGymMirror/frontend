@@ -79,7 +79,11 @@ const ChartScreen = () => {
 
   return (
     <div className="chart-screen-container">
-      <h1>Consulta tu progreso diario</h1>
+      <div className='chart-controls'>
+        <button onClick={previousChart}>{'<'}</button>
+        <h1>Consulta tu progreso diario</h1>
+        <button onClick={nextChart}>{'>'}</button>
+      </div>
       <div className="grafico-progreso">
         <Chart plotData={plotData} plotSerie={currentSerie} />
       </div>
