@@ -1,12 +1,12 @@
 'use client'
 
 import { Logo } from '@/components/Logo'
-import { LITERAL_MONTHS } from '@/scripts/consts'
 import '@/styles/home.css'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const Home = () => {
+  const LITERAL_MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
   const [fecha, setFecha] = useState('')
   const [hora, setHora] = useState('')
   const [minuto, setMinuto] = useState('')

@@ -4,11 +4,11 @@ import '@/styles/weather-screen.css'
 import { useEffect, useState } from 'react'
 
 const WeatherScreen = () => {
-  const [city, setCity] = useState(
-    typeof window !== 'undefined' && localStorage.getItem('city')
-      ? localStorage.getItem('city')
-      : 'Madrid'
-  )
+  const [city, setCity] = useState('')
+
+  useEffect(() => {
+    setCity(localStorage.getItem('city') ? localStorage.getItem('city') : 'Madrid')
+  }, [])
 
   const [loadingWeatherInfo, setLoadingWeatherInfo] = useState(true)
 
