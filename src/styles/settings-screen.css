@@ -6,6 +6,8 @@
   align-items: center;
   justify-content: flex-start;
   row-gap: 4rem;
+  background-color: black !important;
+  color: white !important;
 }
 
 .settings-screen-container h1{
