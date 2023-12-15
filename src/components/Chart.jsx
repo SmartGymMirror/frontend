@@ -33,7 +33,7 @@ export const Chart = ({ plotData, plotSerie }) => {
     },
     muscular_mass: {
       label: 'Masa muscular',
-      colors: { main: '#fabe25', border: '#d87607' },
+      colors: { main: '#c154c1', border: '#ff007f' },
       min: 10,
     },
     body_fat: {
@@ -62,7 +62,7 @@ export const Chart = ({ plotData, plotSerie }) => {
           const ctx = context.chart.ctx
           const gradient = ctx.createLinearGradient(0, 0, 0, 300)
           gradient.addColorStop(0, series[plotSerie].colors.main)
-          gradient.addColorStop(1, 'rgba(255,255,255,0.3)')
+          gradient.addColorStop(1, 'rgba(255,255,255,0.6)')
           return gradient
         },
       },
